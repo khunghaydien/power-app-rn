@@ -164,7 +164,7 @@ export function ScheduleRegistrationForm({
               </Text>
               <TextInput
                 mode="outlined"
-                value={user?.name ?? ""}
+                value={user?.employeeFullname ?? ""}
                 placeholder="—"
                 editable={false}
                 dense

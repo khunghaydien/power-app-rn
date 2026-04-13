@@ -234,7 +234,7 @@ export default function RollCallScreen() {
                     icon="check-outline"
                     mode="contained"
                     containerClassName="rounded-2xl"
-                    onPress={() => router.push("/(tabs)/history-roll-call")}>
+                    onPress={() => router.push("/history-roll-call")}>
                     Điểm danh
                 </AppButton>
             </Surface>

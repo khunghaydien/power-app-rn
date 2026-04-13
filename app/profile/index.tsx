@@ -1,6 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { Image, Pressable, ScrollView, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { Text, TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TabsStackHeader } from "@/components/layout/TabsStackHeader";
@@ -8,7 +7,7 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import { Palette } from "@/utils/palette";
 import { formatDMY } from "@/components/schedule/scheduleFormUtils";
 
-function displayTrainingDate(raw?: string): string {
+function displayTrainingDate(raw?: string | null): string {
   if (!raw?.trim()) return "";
   const s = raw.trim();
   if (/^\d{4}-\d{2}-\d{2}$/.test(s)) {
@@ -44,10 +43,10 @@ export default function ProfileScreen() {
   const user = useAuthStore((s) => s.user);
 
   const employeeCode = user?.employeeCode?.trim() ?? "";
-  const name = user?.name?.trim() ?? "";
+  const name = user?.employeeFullname?.trim() ?? "";
   const gender = user?.gender?.trim() ?? "";
   const region = user?.region?.trim() ?? "";
-  const unit = user?.unit?.trim() ?? "";
+  const unit = user?.department?.trim() ?? "";
   const training = displayTrainingDate(user?.trainingStartDate);
   const avatarUrl = user?.avatarUrl?.trim();
 

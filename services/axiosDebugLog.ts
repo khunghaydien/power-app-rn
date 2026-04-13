@@ -39,6 +39,15 @@ export function attachAxiosDebugLog(
       console.log(
         `[HTTP ${tag}] ← ${response.status} ${method} ${url}`,
       );
+      try {
+        const preview = JSON.stringify(response.data);
+        console.log(
+          `[HTTP ${tag}] data`,
+          preview.length > 1200 ? `${preview.slice(0, 1200)}...` : preview,
+        );
+      } catch {
+        console.log(`[HTTP ${tag}] data`, response.data);
+      }
       return response;
     },
     (error: AxiosError) => {
@@ -56,6 +65,17 @@ export function attachAxiosDebugLog(
           `[HTTP ${tag}] ✕ ${status ?? "NETWORK"} ${method} ${url}`,
           error.message,
         );
+        if (error.response?.data !== undefined) {
+          try {
+            const preview = JSON.stringify(error.response.data);
+            console.warn(
+              `[HTTP ${tag}] error-data`,
+              preview.length > 1200 ? `${preview.slice(0, 1200)}...` : preview,
+            );
+          } catch {
+            console.warn(`[HTTP ${tag}] error-data`, error.response.data);
+          }
+        }
       } else {
         console.warn(`[HTTP ${tag}] ✕`, error.message);
       }

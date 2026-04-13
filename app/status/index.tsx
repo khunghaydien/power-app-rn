@@ -2,8 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import { RefreshControl, ScrollView, View } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import { TabsStackHeader } from "@/components/layout/TabsStackHeader";
 import { AppSelect } from "@/components/ui/AppSelect";
@@ -153,7 +152,7 @@ export default function StatusScreen() {
         <AppButton
           mode="contained"
           icon="plus"
-          onPress={() => router.push("/(tabs)/status/register")}
+          onPress={() => router.push("/status/register")}
         >
           Đăng ký thay đổi tình trạng
         </AppButton>

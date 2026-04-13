@@ -87,12 +87,12 @@ export default function ScheduleScreen() {
       const hasData = datesWithData.has(day.dateString);
       if (hasData) {
         router.push({
-          pathname: "/(tabs)/schedule/edit",
+          pathname: "/schedule/edit",
           params: { date: day.dateString },
         });
       } else {
         router.push({
-          pathname: "/(tabs)/schedule/create",
+          pathname: "/schedule/create",
           params: { date: day.dateString },
         });
       }
